@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Weather App</title>
+  <link rel="stylesheet" href="wapp.css" />
+</head>
+<body>
+  <div class="container">
+  <div class="card">
+    <!--   Search Section -->
+    <div class="search">
+      <input type="text" placeholder="Enter the city name" spellcheck="false" >
+      <button>
+        <img src="https://img.icons8.com/ios-filled/50/000000/search.png" alt="search">
+      </button>
+    </div>
+
+    <!-- 🌦 Weather Section -->
+    <div class="weather">
+      <img src="https://cdn-icons-png.flaticon.com/512/1779/1779940.png" class="weather-icon" alt="weather-icon">
+      <h1 class="temp">22°C</h1>
+      <h2 class="city">New York</h2>
+
+      <!--  Weather Details -->
+      <div class="details">
+        <!-- Humidity -->
+            <div class="col">
+              <img src="https://cdn-icons-png.flaticon.com/128/18664/18664925.png"  alt="Humidity-icon">
+            <div>
+                <p class="humidity value">50%</p>   <!-- add humidity class -->
+                <p class="label">Humidity</p>
+            </div>
+      </div>
+
+          <div class="col">
+            <img src="https://cdn-icons-png.flaticon.com/128/11742/11742593.png"  alt="wind-icon">
+          <div>
+            <p class="wind value">15 Km/h</p>   <!-- add wind class -->
+            <p class="label">Wind Speed</p>
+          </div>
+         </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  <script src="wapp.js"></script>
+</body>
+</html>
