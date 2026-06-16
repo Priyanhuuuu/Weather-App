@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WeatherFlow</title>
+    <link rel="preconnect" href="https://api.open-meteo.com" />
+    <link rel="preconnect" href="https://geocoding-api.open-meteo.com" />
+    <link rel="stylesheet" href="./style.css" />
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
+    <script src="./app.js" defer></script>
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="weather-panel" aria-label="Weather dashboard">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">WeatherFlow</p>
+            <h1 id="placeTitle">Find your forecast</h1>
+          </div>
+          <div class="topbar-actions">
+            <button class="icon-button" id="themeButton" type="button" aria-label="Toggle theme" title="Toggle theme">
+              <i data-lucide="moon"></i>
+            </button>
+            <button class="icon-button" id="locationButton" type="button" aria-label="Use current location" title="Use current location">
+              <i data-lucide="map-pin"></i>
+            </button>
+          </div>
+        </header>
+
+        <form class="search-row" id="searchForm" autocomplete="off">
+          <label class="search-box" for="cityInput">
+            <i data-lucide="search"></i>
+            <input id="cityInput" name="city" type="search" placeholder="Search city, country" aria-label="Search city" />
+          </label>
+          <button class="primary-button" type="submit">
+            <i data-lucide="cloud-sun"></i>
+            <span>Search</span>
+          </button>
+        </form>
+
+        <div class="controls-row" aria-label="Weather settings">
+          <div class="segmented" role="group" aria-label="Temperature unit">
+            <button type="button" class="segment active" data-unit="celsius">C</button>
+            <button type="button" class="segment" data-unit="fahrenheit">F</button>
+          </div>
+          <select id="forecastDays" aria-label="Forecast length">
+            <option value="5">5 days</option>
+            <option value="7" selected>7 days</option>
+            <option value="10">10 days</option>
+            <option value="14">14 days</option>
+          </select>
+          <button class="ghost-button" id="saveCityButton" type="button">
+            <i data-lucide="star"></i>
+            <span>Save</span>
+          </button>
+        </div>
+
+        <section class="hero" aria-live="polite">
+          <div>
+            <p id="statusText" class="status-text">Search for a city or use your current location.</p>
+            <div class="temperature-line">
+              <span id="currentTemp">--</span>
+              <span id="degreeMark">°C</span>
+            </div>
+            <p id="currentSummary" class="summary-text">Ready when you are.</p>
+          </div>
+          <div class="weather-mark" id="weatherMark" aria-hidden="true">
+            <i data-lucide="cloud-sun"></i>
+          </div>
+        </section>
+
+        <section class="metrics-grid" aria-label="Current weather details">
+          <article>
+            <i data-lucide="thermometer"></i>
+            <span>Feels like</span>
+            <strong id="feelsLike">--</strong>
+          </article>
+          <article>
+            <i data-lucide="droplets"></i>
+            <span>Humidity</span>
+            <strong id="humidity">--</strong>
+          </article>
+          <article>
+            <i data-lucide="wind"></i>
+            <span>Wind</span>
+            <strong id="wind">--</strong>
+          </article>
+          <article>
+            <i data-lucide="umbrella"></i>
+            <span>Rain chance</span>
+            <strong id="rainChance">--</strong>
+          </article>
+        </section>
+      </section>
+
+      <aside class="side-panel" aria-label="Forecasts and saved cities">
+        <section class="saved-section">
+          <div class="section-heading">
+            <h2>Saved Cities</h2>
+            <button id="clearSavedButton" class="mini-button" type="button">Clear</button>
+          </div>
+          <div class="saved-list" id="savedList"></div>
+        </section>
+
+        <section>
+          <div class="section-heading">
+            <h2>Hourly</h2>
+          </div>
+          <div class="hourly-strip" id="hourlyStrip"></div>
+        </section>
+
+        <section>
+          <div class="section-heading">
+            <h2>Daily Forecast</h2>
+          </div>
+          <div class="daily-list" id="dailyList"></div>
+        </section>
+      </aside>
+    </main>
+  </body>
+</html>
